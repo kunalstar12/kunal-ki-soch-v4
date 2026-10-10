@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kunal ki soch V4</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Prediction engine</p>
+          <h1>Kunal ki soch V4</h1>
+        </div>
+        <div class="timer-box">
+          <span>Auto mode</span>
+          <strong id="countdown">30</strong>
+          <small>s</small>
+        </div>
+      </header>
+
+      <section class="rules-panel">
+        <h2>Rules engine</h2>
+        <ul>
+          <li>1st rule: Zigzag pattern</li>
+          <li>2nd rule: 2-bar big/small reverse</li>
+          <li>3rd rule: Zigzag + Dragon pattern follow</li>
+          <li>4th rule: 4-level cross protection</li>
+          <li>Final rule: Predict one big/small side and one number</li>
+        </ul>
+      </section>
+
+      <main class="workspace">
+        <section class="panel controls-panel">
+          <h2>Chart setup</h2>
+
+          <div class="field-row two-col">
+            <label>
+              Current period
+              <input id="currentPeriod" type="number" min="1" placeholder="1024" />
+            </label>
+            <label>
+              Auto timer
+              <input id="timerValue" type="number" min="10" max="60" value="30" />
+            </label>
+          </div>
+
+          <label>
+            10-chart history (one per line or comma-separated)
+            <textarea id="historyInput" rows="8" placeholder="Examples:
+1021 | big | 7
+1022 | small | 2
+1023 | big | 8
+1024 | big | 6"></textarea>
+          </label>
+
+          <div class="button-row">
+            <button id="generatePredictionBtn" class="primary">Generate</button>
+            <button id="loadDemoBtn">Load demo</button>
+          </div>
+        </section>
+
+        <section class="panel prediction-panel">
+          <h2>Prediction</h2>
+
+          <div class="prediction-block">
+            <div class="metric">
+              <span>Side</span>
+              <strong id="predictedSide" class="side-pill neutral">--</strong>
+            </div>
+            <div class="metric">
+              <span>Number</span>
+              <strong id="predictedNumber">--</strong>
+            </div>
+            <div class="metric full-width">
+              <span>Reason</span>
+              <p id="predictionReason">Waiting for input...</p>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <section class="panel outcome-panel">
+        <h2>Save result</h2>
+        <div class="field-row outcome-grid">
+          <label>
+            Period
+            <input id="outcomePeriod" type="number" min="1" placeholder="1024" />
+          </label>
+          <label>
+            Result side
+            <select id="outcomeSide">
+              <option value="big">Big</option>
+              <option value="small">Small</option>
+            </select>
+          </label>
+          <label>
+            Number
+            <select id="outcomeNumber">
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+            </select>
+          </label>
+          <label>
+            Outcome
+            <select id="outcomeStatus">
+              <option value="win">Win</option>
+              <option value="loss">Loss</option>
+            </select>
+          </label>
+        </div>
+        <div class="button-row">
+          <button id="saveOutcomeBtn" class="primary">Save win/loss</button>
+        </div>
+      </section>
+
+      <section class="panel history-panel">
+        <h2>Win / loss history</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Period</th>
+              <th>Side</th>
+              <th>Number</th>
+              <th>Result</th>
+            </tr>
+          </thead>
+          <tbody id="historyTableBody"></tbody>
+        </table>
+      </section>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
